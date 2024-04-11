@@ -1,0 +1,68 @@
+// inputs
+let numberOfColors = document.querySelector("#num-colors");
+let format = document.querySelector("#format");
+
+// labels
+let labelColor = document.querySelector(".num");
+
+// color container
+let colors = document.querySelector(".colors");
+
+// buttons
+let generateBtn = document.querySelector(".generate");
+let clearBtn = document.querySelector(".clear");
+
+function generateRandomColor() {
+    if (format.value === "hex") {
+        let hexRange = "0123456789abcdef";
+        let newHexValue = "";
+        for (let i = 0; i < 6; i++) {
+            let index = Math.floor(Math.random() * hexRange.length);
+            newHexValue += hexRange[index];
+        }
+        newHexValue = `#${newHexValue}`;
+        return newHexValue;
+    } else {
+        let rRange = Math.floor(Math.random() * 255);
+        let gRange = Math.floor(Math.random() * 255);
+        let bRange = Math.floor(Math.random() * 255);
+        let newRGBValue = `rgb(${rRange}, ${gRange}, ${bRange})`;
+        return newRGBValue;
+    }
+}
+
+let clutter = "";
+function generatePalette() {
+    if (!numberOfColors.value) {
+        numberOfColors.style.border = "1px solid salmon";
+        labelColor.style.color = "salmon";
+    } else {
+        numberOfColors.style.border = "1px solid #333";
+        labelColor.style.color = "#e4e4e4";
+        clutter = "";
+        for (let i = 0; i < parseInt(numberOfColors.value); i++) {
+            let color = generateRandomColor();
+            clutter += `<div class="color" style="background-color:${color}"><span>${color}</span></div>`;
+        }
+        colors.innerHTML = clutter;
+    }
+}
+
+function clear() {
+    numberOfColors.value = "";
+    colors.innerHTML = "";
+}
+
+generateBtn.addEventListener("click", generatePalette);
+
+clearBtn.addEventListener("click", clear);
+
+let copy = document.querySelector(".copy");
+
+colors.addEventListener("click", (e) => {
+    navigator.clipboard.writeText(e.target.innerText);
+    copy.style.opacity = "1";
+    setTimeout(() => {
+        copy.style.opacity = "0";
+    }, 3000);
+});
