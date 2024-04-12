@@ -11,9 +11,14 @@ body {
     font-family: sans-serif;
 }
 
-body {
+.dark {
     background-color: #121212;
     color: #e4e4e4;
+}
+
+.light {
+    background-color: #e4e4e4;
+    color: #121212;
 }
 
 .app {
@@ -58,19 +63,26 @@ select {
     color: #e4e4e4;
 }
 
+.btns {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
 .btns button {
     padding: 10px 20px;
     border: transparent;
     border-radius: 5px;
-    background-color: #8540d8;
-    color: #fff;
+    background-color: #fafafa;
+    color: #111;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
 }
 
 button:hover {
-    background-color: #ab66ff;
+    background-color: #e2e2e2;
 }
 
 .colors {
@@ -128,4 +140,18 @@ button:hover {
     .color:hover {
         transform: scale(1);
     }
+    button {
+        width: 100%;
+    }
 }
+
+/* .toggleMode {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 2.7rem 2rem;
+}
+
+.toggleMode i {
+    font-size: 2rem;
+} */
