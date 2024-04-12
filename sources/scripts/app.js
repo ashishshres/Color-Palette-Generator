@@ -86,3 +86,10 @@ function copyToClipboard(e) {
 generateBtn.addEventListener("click", generatePalette);
 
 clearBtn.addEventListener("click", clear);
+
+// let toggleMode = document.querySelector(".toggleMode i");
+// let body = document.querySelector("body");
+// toggleMode.addEventListener("click", () => {
+//     toggleMode.classList.toggle("ri-sun-fill");
+//     body.classList.toggle("light");
+// });
